@@ -95,7 +95,7 @@ pipeline {
             //TODO: Watch deployment until pod is in 'Running' state
             steps {
                  script{
-                    openshift.withcluster() {
+                    openshift.withCluster() {
                        openshift.withProject(env.DEV_PROJECT){
                           openshift.selector("dc" , "${APP_NAME}").related('pods').untilEach(1){
                             return (it.object().status.phase=="Running")                                    
